@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema({
     image: {
         type: String,
     },
-    SKU: {
+    sku: {
         type: String,
         required: true,
     },
@@ -39,4 +39,6 @@ const productSchema = new mongoose.Schema({
         ref: "Attributes",
         required: true,
     },   
-})
+}, {timestamps: true})
+
+module.exports = mongoose.model("Product", productSchema);

@@ -9,7 +9,7 @@ const authRoute = require("./routes/authRoute");
 const brandRoute = require("./routes/brandRoute");
 const categoryRoute = require("./routes/categoryRoute");
 const attributeRoute = require("./routes/attributeRoute");
-
+const productRoute = require("./routes/productRoute");
 
 const app = express();
 const PORT = 3000;
@@ -38,6 +38,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/brands", brandRoute);
 app.use("/api/category", categoryRoute);
 app.use("/api/attribute", attributeRoute);
+app.use("/api/product", productRoute);
 
 //server
 app.listen(PORT, ()=>{

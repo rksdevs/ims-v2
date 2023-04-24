@@ -16,8 +16,8 @@ const addAttribute = async(req,res) => {
         const newAttribute = new Attributes(req.body)
 
         await newAttribute.save();
-        const {attributeName, value} = newAttribute._doc;
-        res.status(200).json({attributeName,value})
+        const {attributeName, value, status} = newAttribute._doc;
+        res.status(200).json({attributeName,value, status})
         
     } catch (error) {
         console.log(error);
