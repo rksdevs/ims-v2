@@ -59,4 +59,65 @@ const addProduct = async(req, res) => {
     }
 }
 
-module.exports = {addProduct}
+//delete product
+
+const deleteProduct = async(req,res) => {
+    try {
+        //verify admin
+        const verifyAdmin = req.user.isAdmin;
+        if(!verifyAdmin) {
+            return res.status(400).json({msg: "Unauthorized!"});
+        } 
+        
+        await Product.findByIdAndDelete(req.params.id);
+        res.status(200).json({msg: "Product deleted!"})
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json(error);
+        
+    }
+}
+
+//update product
+
+const editProduct = async(req,res) => {
+    try {
+        //verify admin
+        const verifyAdmin = req.user.isAdmin;
+        if(!verifyAdmin) {
+            return res.status(400).json({msg: "Unauthorized!"});
+        } 
+        
+        const updatedProduct = await Product.findByIdAndUpdate(req.params.id, req.body, {new:true});
+        res.status(200).json(updatedProduct)
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json(error);
+        
+    }
+}
+
+//get all products
+
+const getAllProducts = async(req,res) => {
+    try {
+      //verify admin
+      const verifyAdmin = req.user.isAdmin;
+      if(!verifyAdmin) {
+          return res.status(400).json({msg: "Unauthorized!"});
+      };
+      
+      const allProducts = await Product.find();
+      res.status(200).json(allProducts);
+    
+        
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json(error);
+        
+    }
+}
+
+module.exports = {addProduct, deleteProduct, editProduct, getAllProducts}
