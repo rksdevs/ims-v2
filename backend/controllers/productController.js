@@ -1,7 +1,7 @@
 const Product = require("../models/productModel");
 const Brand = require("../models/brandModel");
-const Category = require("../models/categoryModel");
-const Attributes = require("../models/attributeModel");
+// const Category = require("../models/categoryModel");
+// const Attributes = require("../models/attributeModel");
 
 //add product
 
@@ -14,7 +14,7 @@ const addProduct = async(req, res) => {
             return res.status(400).json({msg: "Unauthorized!"});
         }
 
-        const {productName, image, sku, quantity, price, description, brand, category, attribute} = req.body;
+        const {productName, image, size, color, quantity, price, description, brand, category} = req.body;
 
         //status verification
         const brandStatus = await Brand.findOne({_id: brand, status: "Active"});
@@ -23,30 +23,18 @@ const addProduct = async(req, res) => {
             return res.status(400).json({msg: "Brand is not available!"});
         }
 
-        const categoryStatus = await Category.findOne({_id: category, status: "Active"});
-
-        if(!categoryStatus) {
-            return res.status(400).json({msg: "Category is not available!"});
-        }
-
-        const attributeStatus = await Attributes.findOne({_id: attribute, status: "Active"});
-
-        if(!attributeStatus) {
-            return res.status(400).json({msg: "Attribute is not available!"});
-        }
-
 
 
         const newProduct = new Product({
             productName: productName,
             image: image,
-            sku: sku,
+            size: size,
             quantity: quantity,
             price: price,
             description: description,
             brand: brand,
             category: category,
-            attribute: attribute,
+            color: color
         })
 
         await newProduct.save();
@@ -109,10 +97,30 @@ const getAllProducts = async(req,res) => {
           return res.status(400).json({msg: "Unauthorized!"});
       };
       
-      const allProducts = await Product.find();
-      res.status(200).json(allProducts);
+    //   const allProducts = await Product.find();
+    //   res.status(200).json(allProducts);
     
-        
+    let products;
+    const qNewest = req.query.newest;
+    const qCategory = req.query.category;
+    const qBrand = req.query.brand;
+
+    if(qNewest) {
+        products = await Product.find().sort({createdAt: -1}).limit(1);
+    } else if (qCategory) {
+        products = await Product.find({
+            category: {
+                $in: [qCategory],
+            }
+        })
+    } else if (qBrand) {
+        products = await Product.find({qBrand})
+    } else {
+        products = await Product.find();
+    }
+
+    res.status(200).json(products);
+     
     } catch (error) {
         console.log(error);
         return res.status(500).json(error);

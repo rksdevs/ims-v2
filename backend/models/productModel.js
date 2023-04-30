@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema({
     image: {
         type: String,
     },
-    sku: {
+    description: {
         type: String,
         required: true,
     },
@@ -20,7 +20,11 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    description: {
+    size: {
+        type: String,
+        required: true,
+    },
+    color: {
         type: String,
         required: true,
     },
@@ -30,15 +34,10 @@ const productSchema = new mongoose.Schema({
         required: true,
     },
     category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Category",
+        type: Array,
         required: true,
     },
-    attribute: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Attributes",
-        required: true,
-    },   
+
 }, {timestamps: true})
 
 module.exports = mongoose.model("Product", productSchema);

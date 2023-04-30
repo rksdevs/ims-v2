@@ -7,9 +7,9 @@ require('dotenv').config();
 
 const authRoute = require("./routes/authRoute");
 const brandRoute = require("./routes/brandRoute");
-const categoryRoute = require("./routes/categoryRoute");
-const attributeRoute = require("./routes/attributeRoute");
 const productRoute = require("./routes/productRoute");
+const cartRoute = require("./routes/cartRoute");
+const orderRoute = require("./routes/orderRoute");
 
 const app = express();
 const PORT = 3000;
@@ -36,9 +36,9 @@ app.get("/", (req,res)=>{
 
 app.use("/api/auth", authRoute);
 app.use("/api/brands", brandRoute);
-app.use("/api/category", categoryRoute);
-app.use("/api/attribute", attributeRoute);
+app.use("/api/cart", cartRoute);
 app.use("/api/product", productRoute);
+app.use("/api/order", orderRoute);
 
 //server
 app.listen(PORT, ()=>{
