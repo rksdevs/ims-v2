@@ -1,4 +1,4 @@
-import "./chart.css";
+import "./chart.scss";
 import { LineChart, Line, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const Chart = ({data, title, dataKey, grid}) => {

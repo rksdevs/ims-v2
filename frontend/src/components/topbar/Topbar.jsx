@@ -1,4 +1,4 @@
-import "./topbar.css";
+import "./topbar.scss";
 import NoImg from "../../assets/images/NoImg.png"
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import LanguageIcon from '@mui/icons-material/Language';

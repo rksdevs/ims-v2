@@ -1,6 +1,6 @@
 import Chart from "../../components/chart/Chart"
 import FeaturedInfo from "../../components/featuredInfo/FeaturedInfo"
-import "./home.css"
+import "./home.scss"
 
 import {chartData} from "../../dummyData"
 import WidgetsSm from "../../components/widgetsSM/WidgetsSm"
@@ -10,7 +10,7 @@ import Sidebar from "../../components/sidebar/Sidebar"
 
 const Home = () => {
   return (
-    <div className="home-container">
+    <div className="homeContainer">
       <Topbar />
       <div className="container">
         <Sidebar />

@@ -1,4 +1,4 @@
-import "./widgetsSm.css"
+import "./widgetsSm.scss"
 import ProductOne from "../../assets/images/product1.jpg";
 
 const WidgetsSm = () => {

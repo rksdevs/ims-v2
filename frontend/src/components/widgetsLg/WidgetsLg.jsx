@@ -1,4 +1,4 @@
-import "./widgetsLg.css"
+import "./widgetsLg.scss"
 import NoImg from "../../assets/images/NoImg.png"
 
 const WidgetsLg = () => {

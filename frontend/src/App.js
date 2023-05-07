@@ -1,10 +1,11 @@
-import "./App.css";
+import "./App.scss";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 // import Sidebar from "./components/sidebar/Sidebar";
 // import Topbar from "./components/topbar/Topbar";
 import Home from "./pages/home/Home";
-import Brands from "./pages/brands/Brands";
-import AddBrands from "./pages/addBrands/AddBrands";
+import List from "./pages/list/List";
+import New from "./pages/new/New";
+import Single from "./pages/single/Single"
 
 function App() {
   return (
@@ -19,10 +20,20 @@ function App() {
           <Route path="/">
             <Route index element={<Home />}/>
             <Route path="brands">
-              <Route index element={<Brands />}/>
-              <Route path="addBrands" element={<AddBrands />}/>
+              <Route index element={<List />}/>
+              <Route path="addBrands" element={<New />}/>
+              <Route path=":brandId" element={<Single />}/>
             </Route> 
-          
+            <Route path="products">
+              <Route index element={<List />}/>
+              <Route path="addProducts" element={<New />}/>
+              <Route path=":productId" element={<Single />}/>
+            </Route>
+            <Route path="orders">
+              <Route index element={<List />}/>
+              <Route path="createOrder" element={<New />}/>
+              <Route path=":orderId" element={<Single />}/>
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

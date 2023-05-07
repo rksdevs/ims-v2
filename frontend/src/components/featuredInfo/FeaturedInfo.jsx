@@ -1,4 +1,4 @@
-import "./featuredInfo.css"
+import "./featuredInfo.scss"
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 
