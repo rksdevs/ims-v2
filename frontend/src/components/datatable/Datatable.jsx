@@ -3,8 +3,17 @@ import { DataGrid } from '@mui/x-data-grid';
 import { brandData } from "../../dataSource";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useEffect, useState } from "react";
 
 const Datatable = () => {
+  const [newBrandData, setNewBrandData] = useState([]);
+
+  // useEffect(()=>{
+  //   // const res = fetch("api/brands/allBrands");
+  //   // // console.log(res)
+  //   // setNewBrandData(res.data);
+  //   // console.log(newBrandData)
+  // },[newBrandData])
 
     const actionColumn = [
         {field: "action", headerName: "Actions", width: 160, renderCell: ()=> {

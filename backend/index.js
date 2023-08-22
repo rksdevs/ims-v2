@@ -12,7 +12,7 @@ const cartRoute = require("./routes/cartRoute");
 const orderRoute = require("./routes/orderRoute");
 
 const app = express();
-const PORT = 3000;
+const PORT = 3300;
 
 //middlewares
 app.use(express.json()); // parses json payload and makes them available in the req.body
